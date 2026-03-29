@@ -1,0 +1,542 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@200..800&family=Rubik:ital,wght@0,300..900;1,300..900&family=Varela+Round&display=swap" rel="stylesheet">
+<title>Seven October Songs</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+<link rel="stylesheet" href="styles2.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* מונע גלילה מיותרת */
+}
+
+    .banner {
+    position: relative;
+    background-image: url("bg-2.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    min-height: 900px;
+}
+
+    .banner .big-logo {
+        position: absolute;
+        top: 212px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding-right: 80px;
+    }
+
+        .banner .big-logo img {
+            height: 406px;
+        }
+
+    .banner .left-side {
+        position: absolute;
+        left: 0;
+        width: 735px;
+        height: 900px;
+        background-image: url("רוני_וגיל_בר_הדס-removebg-preview.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+
+    .banner .right-side {
+        position: absolute;
+        right: 0;
+        width: 764px;
+        height: 900px;
+        background-image: url("trytyry1.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+
+    }
+
+    .banner .gradient {
+        position: absolute;
+        bottom: 0;
+        height: 250px;
+        width: 100%;
+        background: linear-gradient(180deg, rgba(9, 43, 63, 0) 0%, #cc9e69 100%);
+    }
+
+.full-width-container {
+    position: relative;
+    background-image: url("https://i.imgur.com/uZvaoI2.jpeg");
+    background-position: bottom center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: #cc9e69;
+}
+
+.content-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-bottom: 180px;
+}
+
+.about-project {
+    margin-bottom: 140px;
+}
+
+    .about-project .title {
+        font-size: 64px;
+        font-family: "Rubik", sans-serif;
+        font-weight: bold;
+        line-height: 60.67px;
+        margin-bottom: 16px;
+        color: whitesmoke;
+    }
+
+        .about-project .title .highlight {
+            color: #FAF4B9;
+        }
+
+    .about-project .description {
+        max-width: 950px;
+        font-size: 23px;
+        line-height: 1.5;
+        font-family: "Rubik", sans-serif;
+        color: white;
+        white-space: pre-line;
+    }
+
+.producers {
+    margin: 0 auto;
+    max-width: 815px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.75;
+}
+
+    .producers .item {
+        margin-left: 16px;
+        display: inline-block;
+    }
+
+        .producers .item:last-child {
+            margin-left: 0;
+        }
+
+        .producers .item .title {
+            margin-left: 4px;
+        }
+
+            .producers .item .title:last-child {
+                margin-left: 0;
+            }
+
+    .producers .value {
+        font-weight: bold;
+    }
+
+@media (min-width: 1367px) and (max-width: 1700px) {
+    .banner .left-side {
+        width: 500px;
+    }
+
+    .banner .right-side {
+        width: 550px;
+    }
+}
+
+@media (min-width: 1025px) and (max-width: 1366px) {
+    .banner {
+        min-height: 675px;
+    }
+
+        .banner .big-logo {
+            top: 244px;
+        }
+
+            .banner .big-logo img {
+                height: 304px;
+            }
+
+        .banner .left-side {
+            width: 443px;
+            height: 675px;
+        }
+
+        .banner .right-side {
+            width: 450px;
+            height: 627px;
+        }
+
+        .banner .gradient {
+            height: 120px;
+        }
+
+    .full-width-container {
+        background-image: url("עיצוב ללא שם (4).png");
+    }
+
+    .content-container {
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 0 43px 180px 43px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .banner {
+        min-height: 443px;
+    }
+
+        .banner .big-logo {
+            top: 100%;
+        }
+
+            .banner .big-logo img {
+                height: 140px;
+            }
+
+        .banner .left-side {
+            width: 304px;
+            height: 443px;
+            background-image: url("https://i.imgur.com/s2mxU86.png");
+        }
+
+        .banner .right-side {
+            top: 95px;
+            width: 180px;
+            height: 350px;
+            background-image: url("https://i.imgur.com/uZvaoI2.jpeg");
+        }
+
+        .banner .gradient {
+            height: 0;
+        }
+
+    .full-width-container {
+        background-image: url("");
+    }
+
+    .content-container {
+        max-width: 100%;
+        padding-bottom: 290px;
+    }
+
+    .about-project {
+        margin-bottom: 80px;
+        padding: 0 30px;
+    }
+
+        .about-project .title {
+            font-size: 40px;
+            line-height: 40px;
+            margin-bottom: 8px;
+        }
+
+            .about-project .title .highlight {
+                color: #FAF4B9;
+            }
+
+        .about-project .description {
+            max-width: 100%;
+            font-size: 20px;
+            line-height: 30px;
+        }
+
+    .producers {
+        max-width: 100%;
+        text-align: right;
+        padding: 0 30px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .banner {
+        background-image: url("bg-2.png");
+        background-size: cover;
+        min-height: 725px;
+    }
+
+        .banner .big-logo {
+            top: 310px;
+        }
+
+            .banner .big-logo img {
+                height: 100%;
+            }
+
+        .banner .left-side {
+            height: 100%;
+            background-image: url("טאב_שמאל_טלפון-removebg-preview.png");
+            padding-top: 50px;
+        }
+
+        .banner .right-side {
+            top: 254px;
+
+            background-image: url("טאב_ימין_טלפון-removebg-preview.png");
+        }
+
+        .banner .gradient {
+            height: 180px;
+        }
+
+    .full-width-container {
+        background-image: url("");
+    }
+
+    .content-container {
+        max-width: 100%;
+    }
+
+    .about-project {
+        margin-bottom: 80px;
+        padding: 0 30px;
+    }
+
+        .about-project .title {
+            font-size: 35px;
+            font-weight: bold;
+            line-height: 40px;
+            margin-bottom: 8px;
+        }
+
+        .about-project .description {
+            max-width: 100%;
+        }
+
+    .producers {
+        max-width: 100%;
+        text-align: right;
+        padding: 0 30px;
+    }
+}
+
+.page {
+    position: relative;
+    min-height: 100vh;
+}
+
+
+.slider-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+
+.swiper-button-next {
+  right: 0px;
+  color: white;
+  font-size: 40px;
+}
+
+.swiper-button-prev {
+  left: 0px;
+  color: white;
+  font-size: 40px;
+}
+
+.floating-icons {
+  bottom: 30px;
+  left: 50%;
+    transform: translateX(-50%);
+
+  display: flex;
+  gap: 20px;
+  position: absolute;
+}
+
+.icon-circle {
+  width: 60px;
+  height: 60px;
+  background: white;
+  border-radius: 50%;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 24px;
+  color: black;
+
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  cursor: pointer;
+}
+
+.icon-circle:hover {
+  transform: scale(1.1);
+}
+
+.icon-circle:active {
+  transform: scale(0.95);
+}
+
+@media screen and (max-width: 1024px) {
+  .banner {
+    min-height: 620px;
+  }
+
+  .banner .big-logo {
+    width: min(320px, 55vw);
+    top: 40%;
+  }
+
+  .banner .left-side {
+    width: 55vw;
+  }
+
+  .banner .right-side {
+    width: 50vw;
+    margin-top: 57px;
+  }
+
+  .banner .gradient {
+    height: 120px;
+  }
+}
+
+
+
+</style>
+</head>
+
+<body>
+
+<!-- באנר -->
+<div class="banner">
+    <div class="left-side"></div>
+
+    <div class="big-logo">
+        <img src="עיצוב_ללא_שם__8_-removebg-preview.png" alt="img-logo"  draggable="false">
+    </div>
+
+    <div class="right-side"></div>
+    <div class="gradient"></div>
+</div>
+
+<!-- תוכן -->
+<div class="full-width-container">
+<div class="content-container">
+
+    <!-- על הפרויקט -->
+    <div class="about-project">
+        <h1 class="title" style="margin-top: 0px;">
+           30 שנה ללכתו של<span class="highlight"> סשה ארגוב</span> 
+        </h1>
+
+        <div class="description">
+           השירים של סשה ארגוב מלווים אותנו כבר עשרות שנים אבל אף פעם לא שמענו אותם ככה. 
+גלי צה"ל מציינת 30 שנה ללכתו של אחד מגדולי המלחינים בזמר העברי.
+ נועם קליינשטיין, ניר כנען, ואלרי חמאתי, יגל אושרי ורוני וגיל בר הדס בביצועים חדשים לשיריו הגדולים.
+        </div>
+
+        <section class="songs-slider" style="background-color: #cc9e69;">
+        <div class="card__container swiper">
+          <div class="card__content">
+            <div class="swiper-wrapper">
+              <article class="card__article swiper-slide">
+                <div class="card__image">
+                  <img src="אליפלט.jpg" alt="image" class="card__img">
+                </div>
+              </article>
+
+              <article class="card__article swiper-slide">
+                <div class="card__image">
+                  <img src="עד - Copy1.jpg" alt="image" class="card__img">
+                </div>
+              </article>
+
+              <article class="card__article swiper-slide">
+                <div class="card__image">
+                  <img src="כשאור דולק בחלונך.jpg" alt="image" class="card__img">
+                </div>
+              </article>
+
+              <article class="card__article swiper-slide">
+                <div class="card__image">
+                  <img src="אליפלט.jpg" alt="image" class="card__img">
+                </div>
+              </article>
+
+              <article class="card__article swiper-slide">
+                <div class="card__image">
+                  <img src="אליפלט.jpg" alt="image" class="card__img">
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div class="swiper-button-next">
+            <i class="bi bi-chevron-right"></i>
+          </div>
+
+          <div class="swiper-button-prev">
+            <i class="bi bi-chevron-left"></i>
+          </div>
+
+          <div class="swiper-pagination"></div>
+        </div>
+      </section>
+
+      <a href="https://www.youtube.com/watch?v=f-frZ5XF-IU&list=PLx4jClAH_07x9CG4a37tyAuV74QBVMS9K" target="_blank">
+\      <img src="youtube.svg" alt="youtube" class="floating-icons" style="bottom: 80px; left: 50%; transform: translateX(-80%);"> 
+      </a>
+
+    </div>
+
+    
+
+    </div>
+  </div>
+
+  
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+  <script>
+  let swiperCards = new Swiper(".card__content", {
+  loop: true,
+  loopAdditionalSlides: 5,
+  spaceBetween: 24,
+  grabCursor: true,
+  slidesPerView: 1.15,
+  centeredSlides: true,
+  autoplay: {
+    delay: 3000,
+    disableOnInteraction: false,
+    pauseOnMouseEnter: true,
+  },
+
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+    dynamicBullets: false,
+  },
+
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+
+  breakpoints: {
+    600: {
+      slidesPerView: 2,
+    },
+    768: {
+      slidesPerView: 1,
+    },
+    968: {
+      slidesPerView: 3,
+    },
+  },
+});
+</script>
+
+</div>
+</div>
+
+
+</body>
+</html>
