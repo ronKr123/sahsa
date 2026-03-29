@@ -141,6 +141,8 @@ transform: scale(1.1);
     margin-inline: 3rem;
   }
 
+
+
 }
 
 /* For large devices */
@@ -180,6 +182,11 @@ transform: scale(1.1);
   .song-lyrics {
     order: 2;
   }
+
+    .swiper-button-next,
+  .swiper-button-prev {
+    display: none !important;
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -217,8 +224,9 @@ transform: scale(1.1);
     transition: transform 0.3s;
   }
 
-  .swiper-slide-active {
-    transform: scale(1.05); /* 🔥 כרטיס מרכזי טיפה גדול */
+    .swiper-button-next,
+  .swiper-button-prev {
+    display: none !important;
   }
 }
 
@@ -245,3 +253,27 @@ transform: scale(1.1);
 }
 }
 
+@media screen and (max-width: 768px) {
+  .banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    min-height: 500px;
+  }
+
+  .banner .big-logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    padding: 0;
+    z-index: 10;
+  }
+
+  .banner .big-logo img {
+    width: 100%;
+    height: auto;
+  }
+}
