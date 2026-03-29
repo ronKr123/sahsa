@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>רדיו</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@200..800&family=Rubik:wght@300..900&family=Varela+Round&family=David+Libre:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+  <link rel="stylesheet" href="syt.css">
+</head>
+<body>
+
+  <main class="wrapper-container">
+    <div class="content-container">
+
+      <a class="to-main-page" href="/">
+        <img src="chevron-left.svg" alt="חזרה לעמוד הראשי">
+        חזרה לעמוד הראשי
+      </a>
+
+      <section class="song-container">
+        <div class="song-image-block">
+          <img src="עוד מחכה לאחד.jpg" alt="תמונה של השיר רדיו" class="song-img">
+        </div>
+
+        <div class="song-lyrics">
+בשנת 1981 להקת סקסטה שרו את "רדיו" הבלתי נשכח.
+צירפנו את רוני אורגד להרכב לבצע אותו יחד 📻
+
+מי מעיר אותי עם שח
+שר לי בוקר טוב
+אם חם או קר או אם רטוב
+בדרכי לבית הספר
+הוא רץ כמו שעון
+קורא אלי מכל חלון
+
+הרדיו שלי
+עונה לקולי
+רדיו נוגן ושר
+תן לנו בוקר טוב
+נגן לנו ערב טוב
+תן לנו לילה טוב
+הגן על מה שטוב
+
+הוא תמיד פוקח עין
+נותן מבלי לדרוש
+ומצייר תמונות בראש
+הוא נמצא איתי אפילו
+בין ספרי לימוד
+שומר ומלווה צמוד
+
+הרדיו שלי...
+
+הוא יוצא איתי העירה
+לעשות סיבוב
+לעולם אינו עצוב
+הוא מרדים אותי כל לילה
+הוא הכי קרוב
+לוחש באוזן לילה טוב
+
+הרדיו שלי...
+        </div>
+
+        <aside class="song-info">
+          <h1 class="song-name">רדיו</h1>
+          <div class="song-short-description">להקת סקסטה ורוני אורגד</div>
+
+          <iframe
+            class="audio-iframe"
+            src="https://omny.fm/shows/songskids55/2adf1f80-0540-421a-8f22-b3b90114cc73/embed?media=audio&size=wide&style=cover&image=1&description=0&download=1&playlistImages=1&playlistShare=1&share=0&subscribe=0"
+            allow="autoplay; clipboard-write"
+            width="100%"
+            height="165"
+            frameborder="0">
+          </iframe>
+
+          <div class="watch-button">
+            <a href="#watch-clip">
+              <span>לצפייה בקליפ</span>
+              <img src="video.svg" alt="וידאו">
+            </a>
+          </div>
+        </aside>
+      </section>
+
+      <section class="video-component" id="watch-clip">
+        <h2 class="video-title">צפו בקליפ</h2>
+
+        <div class="video-container">
+          <iframe
+            src="https://www.youtube.com/embed/P_WgsPV0tR8?si=fKQA-Jz6zkchwi8c"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </section>
+
+      <section class="songs-slider-section">
+        <h2 class="section-title">שירים נוספים</h2>
+
+        <div class="card__container swiper">
+          <div class="card__content">
+            <div class="swiper-wrapper">
+              <article class="card__article swiper-slide">
+                <div class="card__image">
+                  <img src="אליפלט 1.jpg" alt="אליפלט" class="card__img">
+                </div>
+              </article>
+
+              <article class="card__article swiper-slide">
+                <div class="card__image">
+                  <img src="עד - Copy1.jpg" alt="עד" class="card__img">
+                </div>
+              </article>
+
+              <article class="card__article swiper-slide">
+                <div class="card__image">
+                  <img src="כשאור דולק בחלונך.jpg" alt="כשאור דולק בחלונך" class="card__img">
+                </div>
+              </article>
+
+              <article class="card__article swiper-slide">
+                <div class="card__image">
+                  <img src="שיר הרעות.jpg" alt="שיר הרעות" class="card__img">
+                </div>
+              </article>
+
+              <article class="card__article swiper-slide">
+                <div class="card__image">
+                  <img src="עוד מחכה לאחד.jpg" alt="עוד מחכה לאחד" class="card__img">
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div class="swiper-button-next" aria-label="הבא">
+            <i class="bi bi-chevron-right"></i>
+          </div>
+
+          <div class="swiper-button-prev" aria-label="הקודם">
+            <i class="bi bi-chevron-left"></i>
+          </div>
+
+          <div class="swiper-pagination"></div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      new Swiper(".card__content", {
+        loop: true,
+        loopAdditionalSlides: 5,
+        spaceBetween: 24,
+        grabCursor: true,
+        centeredSlides: true,
+        slidesPerView: 1.15,
+        autoplay: {
+          delay: 3000,
+          disableOnInteraction: false,
+          pauseOnMouseEnter: true,
+        },
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+          dynamicBullets: false,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        breakpoints: {
+          600: {
+            slidesPerView: 2,
+          },
+          1024: {
+            slidesPerView: 3,
+          }
+        },
+      });
+    });
+  </script>
+</body>
+</html>

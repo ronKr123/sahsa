@@ -1,0 +1,424 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  direction: rtl;
+  background: #0b3a66;
+  color: #fff;
+  font-family: "Assistant", sans-serif;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.wrapper-container {
+  min-height: 100vh;
+  background-image: url("../images/song-background.png"), url("../images/full-container-background.png");
+  background-position: top center, bottom center;
+  background-size: contain, contain;
+  background-repeat: no-repeat, no-repeat;
+  overflow: hidden;
+}
+
+.content-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 30px 43px 0;
+}
+
+.to-main-page {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 20px 0 80px;
+  font-family: "Varela Round", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: #f6d95b;
+}
+
+.to-main-page img {
+  width: 26px;
+  height: 26px;
+  transform: rotate(180deg);
+}
+
+.to-main-page:hover {
+  color: #fff;
+}
+
+.song-container {
+  display: grid;
+  grid-template-columns: minmax(240px, 1fr) minmax(320px, 1.1fr) 410px;
+  gap: 24px;
+  align-items: start;
+  margin-bottom: 140px;
+}
+
+.song-image-block {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.song-img {
+  width: 100%;
+  max-width: 430px;
+  height: 600px;
+  object-fit: cover;
+  border-radius: 15px;
+  box-shadow: 0 6px 18px rgba(11, 127, 193, 0.24);
+}
+
+.song-lyrics {
+  font-size: 22px;
+  line-height: 32px;
+  white-space: pre-line;
+  text-align: right;
+  color: #fff;
+}
+
+.song-info {
+  padding-left: 10px;
+}
+
+.song-name {
+  margin: 0 0 16px;
+  font-family: "Rubik", sans-serif;
+  font-size: 64px;
+  font-weight: 800;
+  line-height: 1;
+  text-align: right;
+}
+
+.song-short-description {
+  margin-bottom: 32px;
+  font-family: "Varela Round", sans-serif;
+  font-size: 24px;
+  text-align: right;
+  color: #ffffff;
+}
+
+.audio-iframe {
+  width: 100%;
+  border: 0;
+  border-radius: 15px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.16);
+  margin-bottom: 28px;
+}
+
+.watch-button {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.watch-button a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "Varela Round", sans-serif;
+  font-size: 25px;
+  font-weight: 600;
+  color: whitesmoke;
+}
+
+.watch-button a img {
+  width: 30px;
+  height: 30px;
+}
+
+.watch-button a:hover {
+  color: #f6d95b;
+}
+
+.video-component {
+  margin-bottom: 140px;
+}
+
+.video-title,
+.section-title {
+  margin: 0 0 40px;
+  text-align: center;
+  font-family: "Rubik", sans-serif;
+  font-size: 64px;
+  font-weight: 800;
+}
+
+.video-container {
+  text-align: center;
+}
+
+.video-container iframe {
+  width: min(1012px, 100%);
+  height: 569px;
+  border: 0;
+  border-radius: 15px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.songs-slider-section {
+  background-color: #cc9e69;
+  padding: 20px 0 50px;
+  margin: 0 -43px;
+}
+
+.section-title {
+  margin-bottom: 20px;
+}
+
+.card__container {
+  position: relative;
+  padding: 2.5rem 0 3rem;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.card__content {
+  margin-inline: 1.75rem;
+  border-radius: 1.25rem;
+  overflow: hidden;
+}
+
+.card__article {
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.card__image {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.card__image:hover .card__img {
+  transform: scale(1.08);
+}
+
+.card__img {
+  width: 100%;
+  aspect-ratio: 0.78 / 1;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  transition: transform 0.4s ease;
+}
+
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  content: "";
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  color: #fff;
+  width: 44px;
+  height: 44px;
+  font-size: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.swiper-button-prev {
+  left: -10px;
+}
+
+.swiper-button-next {
+  right: -10px;
+}
+
+.swiper-pagination-bullet {
+  background-color: whitesmoke;
+  opacity: 1;
+  width: 14px;
+  height: 14px;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #5faaed;
+  transform: scale(1.4);
+}
+
+.swiper-pagination-bullet,
+.swiper-pagination-bullet-active {
+  transition: none !important;
+}
+
+@media (max-width: 1366px) {
+  .content-container {
+    max-width: 100%;
+    padding: 0 43px;
+  }
+
+  .song-container {
+    grid-template-columns: minmax(220px, 0.9fr) minmax(320px, 1.1fr) 360px;
+  }
+
+  .song-img {
+    height: 520px;
+  }
+
+  .video-container iframe {
+    width: 90%;
+  }
+}
+
+@media (max-width: 1024px) {
+  .wrapper-container {
+    background-image: url("../images/song-background-tablet.png"), url("../images/full-container-background-tablet.png");
+  }
+
+  .content-container {
+    padding: 0 30px;
+  }
+
+  .to-main-page {
+    margin-bottom: 60px;
+  }
+
+  .song-container {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    margin-bottom: 80px;
+  }
+
+  .song-image-block {
+    justify-content: center;
+  }
+
+  .song-img {
+    max-width: 360px;
+    height: 480px;
+  }
+
+  .song-info {
+    padding-left: 0;
+  }
+
+  .song-name {
+    font-size: 40px;
+  }
+
+  .song-short-description {
+    font-size: 20px;
+  }
+
+  .song-lyrics {
+    font-size: 20px;
+  }
+
+  .video-component {
+    margin-bottom: 100px;
+  }
+
+  .video-title,
+  .section-title {
+    font-size: 36px;
+    margin-bottom: 24px;
+  }
+
+  .video-container iframe {
+    width: 100%;
+    height: 400px;
+  }
+
+  .songs-slider-section {
+    margin: 0 -30px;
+  }
+
+  .card__content {
+    margin-inline: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .wrapper-container {
+    background-image: url("../images/song-background-mobile.png"), url("../images/full-container-background-mobile.png");
+  }
+
+  .content-container {
+    padding: 0 20px;
+  }
+
+  .to-main-page {
+    margin-bottom: 30px;
+    font-size: 18px;
+  }
+
+  .song-image-block {
+    display: none;
+  }
+
+  .song-container {
+    gap: 24px;
+    margin-bottom: 60px;
+  }
+
+  .song-name {
+    font-size: 34px;
+  }
+
+  .song-short-description {
+    font-size: 18px;
+    margin-bottom: 24px;
+  }
+
+  .song-lyrics {
+    font-size: 18px;
+    line-height: 30px;
+  }
+
+  .watch-button a {
+    font-size: 20px;
+  }
+
+  .video-component {
+    margin-bottom: 80px;
+  }
+
+  .video-container iframe {
+    height: 177px;
+  }
+
+  .songs-slider-section {
+    margin: 0 -20px;
+    padding-bottom: 40px;
+  }
+
+  .card__container {
+    padding-top: 1.5rem;
+  }
+
+  .swiper-pagination {
+    display: none;
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    display: none;
+  }
+
+  .card__content {
+    overflow: visible;
+  }
+
+  .swiper-slide {
+    width: auto;
+  }
+
+  .swiper-slide-active {
+    transform: scale(1.05);
+  }
+}
