@@ -1,17 +1,10 @@
-* {
-  box-sizing: border-box;
-}
+/*=============== GOOGLE FONTS ===============*/
+@import url("https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@400;500;600&display=swap");
 
-html {
-  scroll-behavior: smooth;
-}
+/*=============== VARIABLES CSS ===============*/
 
-body {
-  margin: 0;
-  direction: rtl;
-  background: #0b3a66;
-  color: #fff;
-  font-family: "Assistant", sans-serif;
+a {
+  text-decoration: none;
 }
 
 img {
@@ -20,170 +13,17 @@ img {
   height: auto;
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-.wrapper-container {
-  min-height: 100vh;
-  background-image: url("../images/song-background.png"), url("../images/full-container-background.png");
-  background-position: top center, bottom center;
-  background-size: contain, contain;
-  background-repeat: no-repeat, no-repeat;
-  overflow: hidden;
-}
-
-.content-container {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 30px 43px 0;
-}
-
-.to-main-page {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin: 20px 0 80px;
-  font-family: "Varela Round", sans-serif;
-  font-size: 20px;
-  font-weight: 600;
-  color: #f6d95b;
-}
-
-.to-main-page img {
-  width: 26px;
-  height: 26px;
-  transform: rotate(180deg);
-}
-
-.to-main-page:hover {
-  color: #fff;
-}
-
-.song-container {
-  display: grid;
-  grid-template-columns: minmax(240px, 1fr) minmax(320px, 1.1fr) 410px;
-  gap: 24px;
-  align-items: start;
-  margin-bottom: 140px;
-}
-
-.song-image-block {
+/*=============== CARD ===============*/
+.container {
   display: flex;
-  justify-content: flex-start;
-}
-
-.song-img {
-  width: 100%;
-  max-width: 430px;
-  height: 600px;
-  object-fit: cover;
-  border-radius: 15px;
-  box-shadow: 0 6px 18px rgba(11, 127, 193, 0.24);
-}
-
-.song-lyrics {
-  font-size: 22px;
-  line-height: 32px;
-  white-space: pre-line;
-  text-align: right;
-  color: #fff;
-}
-
-.song-info {
-  padding-left: 10px;
-}
-
-.song-name {
-  margin: 0 0 16px;
-  font-family: "Rubik", sans-serif;
-  font-size: 64px;
-  font-weight: 800;
-  line-height: 1;
-  text-align: right;
-}
-
-.song-short-description {
-  margin-bottom: 32px;
-  font-family: "Varela Round", sans-serif;
-  font-size: 24px;
-  text-align: right;
-  color: #ffffff;
-}
-
-.audio-iframe {
-  width: 100%;
-  border: 0;
-  border-radius: 15px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.16);
-  margin-bottom: 28px;
-}
-
-.watch-button {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.watch-button a {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-family: "Varela Round", sans-serif;
-  font-size: 25px;
-  font-weight: 600;
-  color: whitesmoke;
-}
-
-.watch-button a img {
-  width: 30px;
-  height: 30px;
-}
-
-.watch-button a:hover {
-  color: #f6d95b;
-}
-
-.video-component {
-  margin-bottom: 140px;
-}
-
-.video-title,
-.section-title {
-  margin: 0 0 40px;
-  text-align: center;
-  font-family: "Rubik", sans-serif;
-  font-size: 64px;
-  font-weight: 800;
-}
-
-.video-container {
-  text-align: center;
-}
-
-.video-container iframe {
-  width: min(1012px, 100%);
-  height: 569px;
-  border: 0;
-  border-radius: 15px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-}
-
-.songs-slider-section {
-  background-color: #cc9e69;
-  padding: 20px 0 50px;
-  margin: 0 -43px;
-}
-
-.section-title {
-  margin-bottom: 20px;
+  justify-content: center;
 }
 
 .card__container {
-  position: relative;
-  padding: 2.5rem 0 3rem;
-  max-width: 1120px;
-  margin: 0 auto;
+  padding-block: 2.5rem;
+  /* overflow: hidden; */
+  margin-bottom: 50px;
+  padding-bottom: 50px;
 }
 
 .card__content {
@@ -194,231 +34,262 @@ a {
 
 .card__article {
   border-radius: 20px;
-  overflow: hidden;
+  overflow: hidden; /* 🔥 חשוב */
+  width: auto;
+
 }
 
 .card__image {
   position: relative;
-  overflow: hidden;
-  border-radius: 20px;
+  background-color: var(--first-color-light);
+  margin-bottom: -.75rem;
+overflow: hidden; 
 }
 
 .card__image:hover .card__img {
-  transform: scale(1.08);
+transform: scale(1.1);
 }
 
 .card__img {
-  width: 100%;
-  aspect-ratio: 0.78 / 1;
-  object-fit: cover;
-  border-radius: 20px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  height: max-content;
+    border-radius: 0px; /* או 0 אם אתה רוצה ללא מסגרת */
+  margin: 0 auto;
+  position: relative;
+  z-index: 5;
   transition: transform 0.4s ease;
+  height: 555px;
+  object-fit: cover;
+
 }
 
-.swiper-button-prev::after,
-.swiper-button-next::after {
+.card__shadow {
+  width: 200px;
+  height: 200px;
+  background-color: var(--first-color-alt);
+  border-radius: 10px;
+  position: absolute;
+  top: 3.75rem;
+  left: 0;
+  right: 0;
+  margin-inline: auto;
+  filter: blur(45px);
+}
+
+.card__name {
+  font-size: var(--h2-font-size);
+  color: var(--second-color);
+  margin-bottom: .75rem;
+}
+
+.card__description {
+  font-weight: 500;
+  margin-bottom: 1.75rem;
+}
+
+.card__button {
+  display: inline-block;
+  background-color: var(--first-color);
+  padding: .75rem 1.5rem;
+  border-radius: .25rem;
+  color: var(--dark-color);
+  font-weight: 600;
+}
+
+/* Swiper class */
+.swiper-button-prev:after,
+.swiper-button-next:after {
   content: "";
 }
 
-.swiper-button-prev,
-.swiper-button-next {
-  color: #fff;
-  width: 44px;
-  height: 44px;
-  font-size: 2rem;
-  top: 50%;
-  transform: translateY(-50%);
-}
 
-.swiper-button-prev {
-  left: -10px;
-}
 
-.swiper-button-next {
-  right: -10px;
+/* חיצים לא יעברו padding מוגזם */
+.swiper-button-prev, .swiper-button-next {
+    padding: 0;
 }
 
 .swiper-pagination-bullet {
   background-color: whitesmoke;
   opacity: 1;
-  width: 14px;
-  height: 14px;
+  width: 18px;
+  height: 18px;
+  transition: 0.3s;
 }
 
 .swiper-pagination-bullet-active {
-  background-color: #5faaed;
-  transform: scale(1.4);
+  background-color: #FAF4B9;
+    transform: scale(1.4);
+
 }
 
 .swiper-pagination-bullet,
 .swiper-pagination-bullet-active {
+  transform: none !important;
   transition: none !important;
 }
 
-@media (max-width: 1366px) {
-  .content-container {
-    max-width: 100%;
-    padding: 0 43px;
-  }
 
-  .song-container {
-    grid-template-columns: minmax(220px, 0.9fr) minmax(320px, 1.1fr) 360px;
-  }
-
-  .song-img {
-    height: 520px;
-  }
-
-  .video-container iframe {
-    width: 90%;
+/*=============== BREAKPOINTS ===============*/
+/* For small devices */
+@media screen and (max-width: 320px) {
+  .card__data {
+    padding: 1rem;
   }
 }
 
-@media (max-width: 1024px) {
-  .wrapper-container {
-    background-image: url("../images/song-background-tablet.png"), url("../images/full-container-background-tablet.png");
+/* For medium devices */
+@media screen and (min-width: 768px) {
+  .card__content {
+    margin-inline: 3rem;
   }
 
-  .content-container {
-    padding: 0 30px;
+
+
+}
+
+/* For large devices */
+@media screen and (min-width: 1120px) {
+  .card__container {
+    max-width: 1120px;
   }
 
-  .to-main-page {
-    margin-bottom: 60px;
+  .swiper-button-prev {
+    left: -1rem;
   }
+  .swiper-button-next {
+    right: -1rem;
+  }
+}
 
+.song-container {
+  display: flex;
+  gap: 30px;
+}
+
+/* 📱 מובייל */
+@media screen and (max-width: 768px) {
   .song-container {
-    grid-template-columns: 1fr;
-    gap: 32px;
-    margin-bottom: 80px;
-  }
-
-  .song-image-block {
-    justify-content: center;
-  }
-
-  .song-img {
-    max-width: 360px;
-    height: 480px;
+    flex-direction: column; /* הכל אחד מתחת לשני */
   }
 
   .song-info {
-    padding-left: 0;
+    order: -1; /* 🔥 מעביר למעלה */
+    padding-left: 0 !important;
   }
 
-  .song-name {
-    font-size: 40px;
-  }
-
-  .song-short-description {
-    font-size: 20px;
+  .song-img {
+    display: none; /* כבר עשית, טוב */
   }
 
   .song-lyrics {
-    font-size: 20px;
+    order: 2;
   }
 
-  .video-component {
-    margin-bottom: 100px;
+    .swiper-button-next,
+  .swiper-button-prev {
+    display: none !important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .card__content {
+    margin-inline: 0; /* מבטל רווחים מהצדדים */
   }
 
-  .video-title,
-  .section-title {
-    font-size: 36px;
-    margin-bottom: 24px;
+  .card__img {
+    border-radius: 0px; /* או 0 אם אתה רוצה ללא מסגרת */
+  margin: 0 auto;
+  position: relative;
+  z-index: 5;
+  transition: transform 0.4s ease;
+  width: 100%;
+  height: 555px;
+  object-fit: cover;
   }
 
-  .video-container iframe {
+  .card__article {
+  border-radius: 20px;
+  overflow: hidden; /* 🔥 חשוב */
+  width: auto;
+
+}
+
+  .swiper {
     width: 100%;
-    height: 400px;
   }
 
-  .songs-slider-section {
-    margin: 0 -30px;
+  .card__article {
+    width: 80%; /* 🔥 גורם לכרטיס להיות גדול */
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+  .swiper-pagination {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .card__content {
+    overflow: visible; /* 🔥 מאפשר לראות את ההצצה */
+  }
+
+  .swiper-slide {
+    transition: transform 0.3s;
+  }
+
+    .swiper-button-next,
+  .swiper-button-prev {
+    display: none !important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+
+  .swiper {
+    direction: rtl; /* 🔥 זה הקסם */
   }
 
   .card__content {
     margin-inline: 0;
-  }
-}
-
-@media (max-width: 767px) {
-  .wrapper-container {
-    background-image: url("../images/song-background-mobile.png"), url("../images/full-container-background-mobile.png");
-  }
-
-  .content-container {
-    padding: 0 20px;
-  }
-
-  .to-main-page {
-    margin-bottom: 30px;
-    font-size: 18px;
-  }
-
-  .song-image-block {
-    display: none;
-  }
-
-  .song-container {
-    gap: 24px;
-    margin-bottom: 60px;
-  }
-
-  .song-name {
-    font-size: 34px;
-  }
-
-  .song-short-description {
-    font-size: 18px;
-    margin-bottom: 24px;
-  }
-
-  .song-lyrics {
-    font-size: 18px;
-    line-height: 30px;
-  }
-
-  .watch-button a {
-    font-size: 20px;
-  }
-
-  .video-component {
-    margin-bottom: 80px;
-  }
-
-  .video-container iframe {
-    height: 177px;
-  }
-
-  .songs-slider-section {
-    margin: 0 -20px;
-    padding-bottom: 40px;
-  }
-
-  .card__container {
-    padding-top: 1.5rem;
-  }
-
-  .swiper-pagination {
-    display: none;
-  }
-
-  .swiper-button-next,
-  .swiper-button-prev {
-    display: none;
-  }
-
-  .card__content {
-    overflow: visible;
+    overflow: visible; /* כדי לראות הצצה */
   }
 
   .swiper-slide {
     width: auto;
   }
 
-  .swiper-slide-active {
-    transform: scale(1.05);
+  .card__container {
+    padding-block: 2.5rem;
+    overflow: hidden;
+    margin-bottom: 50px;
+    padding-bottom: 50px;
+}
+}
+
+@media screen and (max-width: 768px) {
+  .banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    min-height: 500px;
+  }
+
+
+  .banner .big-logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    padding: 0;
+    z-index: 10;
+  }
+
+  .banner .big-logo img {
+    width: 100%;
+    height: auto;
   }
 }
