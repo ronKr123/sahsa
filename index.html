@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>לוח שידורים</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@200..800&family=Rubik:ital,wght@0,300..900;1,300..900&family=Varela+Round&display=swap" rel="stylesheet">
+  <style>
+    :root {
+  --bg: #f6f7fb;
+  --card: #ffffff;
+  --text: #111827;
+  --muted: #6b7280;
+  --primary: #1d3fbf;
+  --line: #e5e7eb;
+  --shadow: 0 14px 40px rgba(17, 24, 39, 0.08);
+  --radius: 22px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.page {
+  width: min(1280px, calc(100% - 32px));
+  margin: 24px auto 40px;
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  background: linear-gradient(180deg, #ffffff 0%, #f3f4f6 100%);
+  border-radius: 28px;
+  padding: 28px 28px 18px;
+  box-shadow: var(--shadow);
+  min-height: 180px;
+}
+
+.hero__logo img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  display: block;
+}
+
+.hero__content {
+  text-align: right;
+  margin-inline-start: auto;
+}
+
+.hero__kicker {
+  margin: 0 0 8px;
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(28px, 4vw, 46px);
+  line-height: 1.1;
+}
+
+.hero__subtitle {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.week-bar {
+  margin-top: 18px;
+  background: var(--card);
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+  padding: 18px 14px;
+  display: grid;
+  grid-template-columns: 56px 1fr 56px;
+  align-items: center;
+  gap: 12px;
+}
+
+.week-bar__center {
+  text-align: center;
+}
+
+.week-bar h2 {
+  margin: 0;
+  font-size: 22px;
+}
+
+.week-bar__range {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.nav-btn {
+  width: 56px;
+  height: 56px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: #fff;
+  cursor: pointer;
+  font-size: 28px;
+  line-height: 1;
+  transition: 0.2s ease;
+}
+
+.nav-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+}
+
+.day-tabs {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+}
+
+.day-tab {
+  background: var(--card);
+  border: 1px solid transparent;
+  border-radius: 20px;
+  padding: 14px 10px;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: 0.2s ease;
+  min-height: 92px;
+}
+
+.day-tab:hover {
+  transform: translateY(-1px);
+}
+
+.day-tab__name {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 8px;
+}
+
+.day-tab__num {
+  display: block;
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.day-tab__month {
+  display: block;
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.day-tab.is-active {
+  border-color: var(--primary);
+  outline: 2px solid rgba(29, 63, 191, 0.08);
+}
+
+.schedule-wrap {
+  margin-top: 18px;
+  background: var(--card);
+  border-radius: 26px;
+  box-shadow: var(--shadow);
+  padding: 18px;
+}
+
+.schedule-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 0 8px 12px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 14px;
+}
+
+.schedule-head h3 {
+  margin: 0;
+  font-size: 22px;
+}
+
+.schedule-head p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.schedule-list {
+  display: grid;
+  gap: 14px;
+}
+
+.show-card {
+  display: grid;
+  grid-template-columns: 260px 1fr 110px;
+  gap: 18px;
+  align-items: center;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: #fff;
+}
+
+.show-card__image {
+  width: 100%;
+  height: 150px;
+  border-radius: 16px;
+  object-fit: cover;
+  background: #eef2ff;
+}
+
+.show-card__title {
+  margin: 0 0 8px;
+  font-size: 25px;
+  font-family: "Assistant", sans-serif;
+}
+
+.show-card__meta {
+  margin: 0 0 10px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.show-card__desc {
+  margin: 0;
+  line-height: 1.7;
+  color: #374151;
+  font-size: 14px;
+}
+
+.show-card__time {
+  text-align: center;
+  font-weight: 800;
+  font-size: 20px;
+  color: var(--text);
+}
+
+.show-card__badge {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: #f3f4f6;
+  color: #374151;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.empty-state {
+  padding: 28px;
+  text-align: center;
+  color: var(--muted);
+  border: 1px dashed var(--line);
+  border-radius: 20px;
+  background: #fafafa;
+}
+
+@media (max-width: 1100px) {
+  .day-tabs {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .show-card {
+    grid-template-columns: 220px 1fr;
+  }
+
+  .show-card__time {
+    grid-column: 1 / -1;
+    text-align: right;
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 720px) {
+  .page {
+    width: min(100% - 16px, 100%);
+    margin-top: 8px;
+  }
+
+  .hero {
+    padding: 18px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hero__logo img {
+    width: 88px;
+    height: 88px;
+  }
+
+  .week-bar {
+    grid-template-columns: 44px 1fr 44px;
+    padding: 12px 10px;
+  }
+
+  .nav-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+  }
+
+  .day-tabs {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .show-card {
+    grid-template-columns: 1fr;
+  }
+
+  .show-card__image {
+    height: 200px;
+  }
+
+  .schedule-head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+  </style>
+</head>
+<body>
+  <main class="page">
+    <!-- <header class="hero">
+      <div class="hero__logo">
+        <img src="GLZPLUSLOGO-removebg-preview.png" alt="לוגו" />
+      </div>
+
+      <div class="hero__content">
+        <p class="hero__kicker">לוח שידורים</p>
+        <h1>ערוץ כמו חינוכית</h1>
+        <p class="hero__subtitle">לוח שבועי שמתעדכן אוטומטית לפי התאריך הנוכחי</p>
+      </div>
+    </header> -->
+
+    <section class="week-bar">
+      <button id="prevWeek" class="nav-btn" aria-label="שבוע קודם">‹</button>
+
+      <div class="week-bar__center">
+        <h2 id="weekTitle">טוען...</h2>
+        <p id="weekRange" class="week-bar__range"></p>
+      </div>
+
+      <button id="nextWeek" class="nav-btn" aria-label="שבוע הבא">›</button>
+    </section>
+
+    <section id="dayTabs" class="day-tabs"></section>
+
+    <section class="schedule-wrap">
+      <div class="schedule-head">
+        <h3 id="dayTitle">...</h3>
+        <p id="dayDate"></p>
+      </div>
+
+      <div id="scheduleList" class="schedule-list"></div>
+    </section>
+  </main>
+
+  <script>
+    const state = {
+  data: null,
+  viewWeekStart: null,
+  selectedDate: null,
+  midnightTimer: null,
+};
+
+const dayNames = ["ראשון", "שני", "שלישי", "רביעי", "חמישי", "שישי", "שבת"];
+const monthNames = [
+  "ינואר", "פברואר", "מרץ", "אפריל", "מאי", "יוני",
+  "יולי", "אוגוסט", "ספטמבר", "אוקטובר", "נובמבר", "דצמבר"
+];
+
+document.addEventListener("DOMContentLoaded", init);
+
+async function init() {
+  bindEvents();
+  await loadData();
+  setInitialWeekToToday();
+  render();
+  scheduleMidnightRefresh();
+}
+
+function bindEvents() {
+  document.getElementById("prevWeek").addEventListener("click", () => {
+    state.viewWeekStart = addDays(state.viewWeekStart, -7);
+    state.selectedDate = new Date(state.viewWeekStart);
+    render();
+  });
+
+  document.getElementById("nextWeek").addEventListener("click", () => {
+    state.viewWeekStart = addDays(state.viewWeekStart, 7);
+    state.selectedDate = new Date(state.viewWeekStart);
+    render();
+  });
+}
+
+async function loadData() {
+  const res = await fetch("schedule-data.json", { cache: "no-store" });
+  state.data = await res.json();
+}
+
+function setInitialWeekToToday() {
+  const today = startOfDay(new Date());
+  const foundWeek = getWeekForDate(today);
+
+  if (foundWeek) {
+    state.viewWeekStart = parseISODate(foundWeek.weekStart);
+  } else {
+    state.viewWeekStart = getWeekStart(today);
+  }
+
+  state.selectedDate = today;
+}
+
+function render() {
+  if (!state.data) return;
+
+  const weekStart = state.viewWeekStart;
+  const weekEnd = addDays(weekStart, 6);
+
+  document.getElementById("weekTitle").textContent =
+    `שבוע ${formatDate(weekStart)} - ${formatDate(weekEnd)}`;
+
+  document.getElementById("weekRange").textContent =
+    `מ־${formatLongDate(weekStart)} עד ${formatLongDate(weekEnd)}`;
+
+  renderDays();
+  renderScheduleForSelectedDay();
+}
+
+function renderDays() {
+  const container = document.getElementById("dayTabs");
+  container.innerHTML = "";
+
+  const today = startOfDay(new Date());
+
+  for (let i = 0; i < 7; i++) {
+    const date = addDays(state.viewWeekStart, i);
+    const isActive = isSameDay(date, state.selectedDate);
+    const isToday = isSameDay(date, today);
+
+    const btn = document.createElement("button");
+    btn.className = `day-tab ${isActive ? "is-active" : ""}`;
+    btn.innerHTML = `
+      <span class="day-tab__name">${dayNames[date.getDay()]}</span>
+      <span class="day-tab__num">${date.getDate()}</span>
+      <span class="day-tab__month">${monthNames[date.getMonth()]}</span>
+      ${isToday ? '<span class="day-tab__month">היום</span>' : ""}
+    `;
+
+    btn.addEventListener("click", () => {
+      state.selectedDate = date;
+      renderDays();
+      renderScheduleForSelectedDay();
+    });
+
+    container.appendChild(btn);
+  }
+}
+
+function renderScheduleForSelectedDay() {
+  const date = state.selectedDate;
+  const dayTitle = document.getElementById("dayTitle");
+  const dayDate = document.getElementById("dayDate");
+  const list = document.getElementById("scheduleList");
+
+  dayTitle.textContent = `${dayNames[date.getDay()]} - לוח שידורים`;
+  dayDate.textContent = formatLongDate(date);
+
+  const items = getProgramsForDate(date);
+
+  if (!items || items.length === 0) {
+    list.innerHTML = `
+      <div class="empty-state">
+        אין שידורים מוגדרים ליום הזה עדיין.
+      </div>
+    `;
+    return;
+  }
+
+  const sorted = [...items].sort((a, b) => (a.start || "").localeCompare(b.start || ""));
+  list.innerHTML = "";
+
+  sorted.forEach((item) => {
+    const card = document.createElement("article");
+    card.className = "show-card";
+
+    card.innerHTML = `
+      <img class="show-card__image" src="${item.image || "media/placeholder.jpg"}" alt="${escapeHtml(item.title)}" />
+      <div class="show-card__content">
+        <h4 class="show-card__title">${escapeHtml(item.title || "")}</h4>
+        <p class="show-card__meta">
+          ${escapeHtml(item.host || "")}
+          ${item.host ? " • " : ""}
+          ${item.category ? escapeHtml(item.category) : ""}
+        </p>
+        <p class="show-card__desc">${escapeHtml(item.description || "")}</p>
+        ${item.badge ? `<span class="show-card__badge">${escapeHtml(item.badge)}</span>` : ""}
+      </div>
+      <div class="show-card__time">
+        ${formatTimeRange(item.start, item.end)}
+      </div>
+    `;
+
+    list.appendChild(card);
+  });
+}
+
+function getProgramsForDate(date) {
+  const iso = toISO(date);
+
+  if (state.data.exceptions && state.data.exceptions[iso]) {
+    return state.data.exceptions[iso];
+  }
+
+  const dayIndex = date.getDay();
+  if (state.data.weeklyTemplate && state.data.weeklyTemplate[String(dayIndex)]) {
+    return state.data.weeklyTemplate[String(dayIndex)];
+  }
+
+  return [];
+}
+
+function getWeekForDate(date) {
+  if (!state.data || !Array.isArray(state.data.weeks)) return null;
+
+  const target = startOfDay(date).getTime();
+
+  for (const week of state.data.weeks) {
+    const start = parseISODate(week.weekStart);
+    const end = addDays(start, 6);
+    if (target >= start.getTime() && target <= end.getTime()) {
+      return week;
+    }
+  }
+
+  return null;
+}
+
+function scheduleMidnightRefresh() {
+  if (state.midnightTimer) clearTimeout(state.midnightTimer);
+
+  const now = new Date();
+  const nextMidnight = new Date(now);
+  nextMidnight.setHours(24, 0, 0, 250);
+
+  const ms = nextMidnight.getTime() - now.getTime();
+
+  state.midnightTimer = setTimeout(async () => {
+    await loadData();
+    setInitialWeekToToday();
+    render();
+    scheduleMidnightRefresh();
+  }, ms);
+}
+
+function startOfDay(date) {
+  const d = new Date(date);
+  d.setHours(0, 0, 0, 0);
+  return d;
+}
+
+function getWeekStart(date) {
+  const d = startOfDay(date);
+  const day = d.getDay(); // Sunday = 0
+  d.setDate(d.getDate() - day);
+  return d;
+}
+
+function addDays(date, days) {
+  const d = new Date(date);
+  d.setDate(d.getDate() + days);
+  return startOfDay(d);
+}
+
+function isSameDay(a, b) {
+  return (
+    a.getFullYear() === b.getFullYear() &&
+    a.getMonth() === b.getMonth() &&
+    a.getDate() === b.getDate()
+  );
+}
+
+function parseISODate(iso) {
+  const [year, month, day] = iso.split("-").map(Number);
+  return new Date(year, month - 1, day);
+}
+
+function toISO(date) {
+  const y = date.getFullYear();
+  const m = String(date.getMonth() + 1).padStart(2, "0");
+  const d = String(date.getDate()).padStart(2, "0");
+  return `${y}-${m}-${d}`;
+}
+
+function formatDate(date) {
+  return `${String(date.getDate()).padStart(2, "0")}/${String(date.getMonth() + 1).padStart(2, "0")}`;
+}
+
+function formatLongDate(date) {
+  return `${dayNames[date.getDay()]}, ${date.getDate()} ${monthNames[date.getMonth()]} ${date.getFullYear()}`;
+}
+
+function formatTimeRange(start, end) {
+  if (!start && !end) return "שעה לא מוגדרת";
+  if (start && end) return `${start} - ${end}`;
+  return start || end || "";
+}
+
+function escapeHtml(text) {
+  return String(text)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+  </script>
+</body>
+</html>

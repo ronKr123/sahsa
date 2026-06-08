@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>ארכיון תוכניות</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@200..800&family=Rubik:ital,wght@0,300..900;1,300..900&family=Varela+Round&display=swap" rel="stylesheet">
+    <style>
+        *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#04051c;
+    color:white;
+    font-family:Arial;
+}
+
+.hero{
+    position:relative;
+    height:75vh;
+    overflow:hidden;
+}
+
+.hero-image{
+    width:100%;
+    object-fit:cover;
+}
+
+.overlay{
+    position:absolute;
+    inset:0;
+    background:
+    linear-gradient(
+        90deg,
+        rgba(0,0,0,.8),
+        rgba(0,0,0,.3)
+    );
+    z-index:1;
+}
+
+.hero-content{
+    position:absolute;
+    right:80px;
+    top:50%;
+    transform:translateY(-50%);
+    z-index:2;
+    max-width:450px;
+}
+
+.hero-content h1{
+    font-size:60px;
+    margin-bottom:20px;
+}
+
+.hero-content p{
+    line-height:1.8;
+    color:#ddd;
+}
+
+.hero-content button{
+    margin-top:25px;
+    border:none;
+    padding:16px 35px;
+    border-radius:40px;
+    background:white;
+    color:black;
+    font-size:18px;
+    cursor:pointer;
+}
+
+.tabs{
+    display:flex;
+    gap:30px;
+    padding:25px 50px;
+    border-bottom:1px solid rgba(255,255,255,.2);
+}
+
+.tabs button{
+    background:none;
+    border:none;
+    color:white;
+    font-size:22px;
+    cursor:pointer;
+}
+
+.tabs .active{
+    border-bottom:3px solid white;
+    padding-bottom:10px;
+}
+
+.videos{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
+    gap:30px;
+    padding:40px;
+}
+
+.card{
+    cursor:pointer;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+}
+
+.card img{
+    width:100%;
+    height:200px;
+    object-fit:cover;
+    border-radius:18px;
+}
+
+.duration{
+    position:absolute;
+    margin-top:-40px;
+    margin-right:15px;
+    background:rgba(255,255,255,.9);
+    color:black;
+    padding:5px 10px;
+    border-radius:20px;
+    font-weight:bold;
+}
+
+.info{
+    margin-top:15px;
+}
+
+.date{
+    color:#aaa;
+    margin-bottom:8px;
+}
+
+.info h3{
+    font-size:22px;
+}
+
+.tab-btn{
+    background:none;
+    border:none;
+    color:#888;
+    font-size:20px;
+    cursor:pointer;
+    padding-bottom:10px;
+}
+
+.tab-btn.active{
+    color:#fff;
+    border-bottom:3px solid white;
+}
+
+.tab-content{
+    display:none;
+}
+
+.active-content{
+    display:block;
+}
+
+
+@media (max-width:768px){
+
+    .hero{
+        height:50vh;
+    }
+
+    .hero-content{
+        position:relative;
+        top:auto;
+        right:auto;
+        transform:none;
+
+        margin-top:-20px;
+
+        text-align:center;
+
+        padding:0 20px;
+    }
+
+    .hero-content button{
+        display:none;
+    }
+
+    .hero-content img{
+        width:180px !important;
+        margin:auto;
+        display:block;
+    }
+
+    .tabs{
+
+        overflow-x:auto;
+
+        white-space:nowrap;
+
+        padding:15px;
+
+        gap:15px;
+
+        scrollbar-width:none;
+    }
+
+    .tabs::-webkit-scrollbar{
+        display:none;
+    }
+
+    .videos{
+
+        display:flex;
+        flex-direction:column;
+
+        padding:15px;
+
+        gap:15px;
+    }
+
+    .card{
+
+        display:flex;
+
+        align-items:center;
+
+        gap:12px;
+
+        background:#0f122f;
+
+        padding:10px;
+
+        border-radius:16px;
+    }
+
+    .card img{
+
+        width:140px;
+
+        height:80px;
+
+        object-fit:cover;
+
+        border-radius:10px;
+
+        flex-shrink:0;
+    }
+
+    .info{
+
+        margin-top:0;
+    }
+
+    .info h3{
+
+        font-size:15px;
+        line-height:1.4;
+    }
+
+    .date{
+
+        font-size:12px;
+    }
+}
+
+@media (max-width:768px){
+
+    .hero{
+        height:45vh;
+    }
+
+    .hero-content{
+
+        position:relative;
+
+        right:auto;
+        left:auto;
+
+        top:auto;
+
+        transform:none;
+
+        max-width:100%;
+
+        text-align:center;
+
+        margin-top:-30px;
+
+        padding:0 20px;
+    }
+
+    .hero-content img{
+
+        width:180px !important;
+
+        display:block;
+        margin:auto;
+    }
+
+    .hero-content p{
+        font-size:15px !important;
+    }
+
+    .hero-content button{
+        display:none;
+    }
+
+    .tabs{
+
+        overflow-x:auto;
+
+        white-space:nowrap;
+
+        gap:20px;
+
+        padding:15px;
+
+        scrollbar-width:none;
+    }
+
+    .tabs::-webkit-scrollbar{
+        display:none;
+    }
+
+    .videos{
+
+        display:flex;
+        flex-direction:column;
+
+        gap:15px;
+
+        padding:15px;
+    }
+
+    .card{
+
+        display:flex;
+
+        align-items:center;
+
+        gap:12px;
+
+        background:rgba(255,255,255,.05);
+
+        border-radius:15px;
+
+        padding:10px;
+    }
+
+    .card img{
+
+        width:140px;
+
+        height:80px;
+
+        border-radius:10px;
+
+        flex-shrink:0;
+    }
+
+    .info{
+        margin-top:0;
+    }
+
+    .info h3{
+        font-size:15px;
+        line-height:1.4;
+    }
+
+    .date{
+        font-size:12px;
+    }
+
+}
+    </style>
+</head>
+<body>
+
+<section class="hero">
+
+    <div class="overlay"></div>
+
+    <img id="heroImage" class="hero-image">
+
+    <div class="hero-content">
+        <img src="טוב שבאתם לוגו חדש 1.png" alt="לוגו" style="width: 310px; height: auto; margin-bottom: 20px;">
+        <p style="font-size: 18px; font-family: 'Rubik', sans-serif; font-weight:700; color: white;">
+תכנית הצהריים החדשה של גלי צה"ל עם שלמור שטרוזמן, מירב פלדמן ואדם גבאי. מחכים לכם עם האירוחים הכי מעניינים וכל מה שאולי פספסתם וכדאי שתדעו… לא תבואו?
+        </p>
+
+        <button>לצפייה באירוח האחרון</button>
+    </div>
+
+</section>
+
+<section class="tabs">
+
+    <button class="tab-btn active" data-tab="full">
+        האירוחים המלאים
+    </button>
+
+    <button class="tab-btn" data-tab="music">
+        ביצועים מוזיקליים
+    </button>
+
+    <button class="tab-btn" data-tab="sahit">
+        סאחית לשבת
+    </button>
+
+    <button class="tab-btn" data-tab="hormonal">
+        הורמונלית או נורמלית
+    </button>
+
+</section>
+
+<section class="videos">
+
+    <section id="full" class="tab-content active-content">
+
+    <div class="card">
+        <img src="https://picsum.photos/400/250?4">
+
+        <div class="info">
+            <p class="date">30.05.26</p>
+            <h3>שם הסרטון</h3>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="https://picsum.photos/400/250?5">
+
+        <div class="info">
+            <p class="date">30.05.26</p>
+            <h3>שם הסרטון</h3>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="https://picsum.photos/400/250?6">
+
+        <div class="info">
+
+            <h3>שם הסרטון</h3>
+        </div>
+    </div>
+    </section>
+    </section>
+
+
+    <section id="music" class="tab-content">
+
+    <div class="card">
+        <img src="https://picsum.photos/400/250?5">
+
+        <div class="info">
+            <p class="date">30.05.26</p>
+            <h3>שם הסרטון</h3>
+        </div>
+    </div>
+</section>
+
+    </section>
+
+    <section id="sahit" class="tab-content">
+
+    <div class="card">
+        <img src="https://picsum.photos/400/250?6">
+
+        <div class="info">
+
+            <h3>שם הסרטון</h3>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="https://picsum.photos/400/250?5">
+
+        <div class="info">
+            <p class="date">30.05.26</p>
+            <h3>שם הסרטון</h3>
+        </div>
+    </div>
+    </section>
+    </section>
+
+    <section id="hormonal" class="tab-content">
+
+    <div class="card">
+        <img src="https://picsum.photos/400/250?6">
+
+        <div class="info">
+
+            <h3>שם הסרטון</h3>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="https://picsum.photos/400/250?5">
+
+        <div class="info">
+            <p class="date">30.05.26</p>
+            <h3>שם הסרטון</h3>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="images\2.png">
+
+        <div class="info">
+
+            <h3>שם הסרטון</h3>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="https://picsum.photos/400/250?5">
+
+        <div class="info">
+            <p class="date">30.05.26</p>
+            <h3>שם הסרטון</h3>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="https://picsum.photos/400/250?6">
+
+        <div class="info">
+
+            <h3>שם הסרטון</h3>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="https://picsum.photos/400/250?5">
+
+        <div class="info">
+            <p class="date">30.05.26</p>
+            <h3>שם הסרטון</h3>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="https://picsum.photos/400/250?6">
+
+        <div class="info">
+
+            <h3>שם הסרטון</h3>
+        </div>
+    </div>
+    </section>
+    </section>
+
+</section>
+
+<script>
+
+const tabs = document.querySelectorAll(".tab-btn");
+
+tabs.forEach(tab => {
+
+    tab.addEventListener("click", () => {
+
+        document.querySelectorAll(".tab-btn")
+            .forEach(btn => btn.classList.remove("active"));
+
+        document.querySelectorAll(".tab-content")
+            .forEach(content => content.classList.remove("active-content"));
+
+        tab.classList.add("active");
+
+        document.getElementById(
+            tab.dataset.tab
+        ).classList.add("active-content");
+
+    });
+
+});
+
+const banners = [
+    "images/1.png",
+    "images/2.png",
+    "images/3.png",
+    "images/image (4).jpg"
+];
+
+const randomBanner =
+    banners[Math.floor(Math.random() * banners.length)];
+
+document.getElementById("heroImage").src =
+    randomBanner;
+
+
+// טאבים
+
+
+
+</script>
+
+</body>
+</html>

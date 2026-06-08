@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@200..800&family=Rubik:ital,wght@0,300..900;1,300..900&family=Varela+Round&display=swap" rel="stylesheet">
+<title>Archive Page</title>
+<link rel="stylesheet"
+href="https://cdn.plyr.io/3.7.8/plyr.css" />
+
+<script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"></script>
+<style>
+  *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
+  }
+
+  body{
+    background:#F1F3F9;
+    overflow-x:hidden;
+  }
+
+  /* תיקון ושיפור הקרוסלה */
+/* תיקון ושיפור הקרוסלה */
+  .hero-slider{
+    position:relative;
+    height:80vh;
+    overflow:hidden;
+    background:#002f5a; /* צבע הרקע שאליו התמונה תתמזג */
+  }
+
+  .slides{
+    height:100%;
+    display:flex;
+    width: 100%;
+    transition: transform .6s ease-in-out;
+  }
+
+  .slide{
+    min-width: 100%;
+    height: 100%;
+    position: relative;
+    display:flex;
+    align-items:center;
+  }
+
+  /* תמונת רקע עם אפקט טשטוש/היעלמות בצד שמאל */
+  .slide img.bg-image{
+    position: absolute;
+  left: 0;
+  top: 0;
+  /* width: 100%; */
+  height: 100%;
+  object-fit: cover;
+  
+  /* התמונה אטומה בשמאל (0%) ומתחילה להיעלם לקראת צד ימין (נמחקת לחלוטין ב-80%) */
+  mask-image: linear-gradient(to right, rgba(0,0,0,1) 00%, rgba(0,0,0,0) 0%);
+  -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 100%);
+  }
+
+  /* שכבת גרדיאנט משלימה למעבר חלק */
+  .overlay{
+    position: absolute;
+  /* inset: 0; */ /* תוריד את ההערה מהקוד המקורי שלך כדי שיפרוס על הכל */
+  inset: 0; 
+  
+  /* צבע כחול כהה ואטום בצד ימין, שהולך ונפתח לשקיפות בצד שמאל */
+  background: linear-gradient(to left, #001f5a 10%, rgba(0, 31, 90, 0) 50%);
+  z-index: 1;
+  pointer-events: none;
+  }
+
+  /* שכבת הטשטוש הימנית המבוקשת */
+  .blur-overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    /* width: 40%; */
+    height: 100%;
+    background: hsla(219, 100%, 18%, 0.4);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+
+  /* סידור אלמנטים אנכי: לוגו -> טקסט -> כפתור */
+  .content{
+    position:absolute;
+    top:50%;
+    right:10%;
+    transform:translateY(-50%);
+    color:white;
+    width:450px;
+    z-index:2;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .content .logo {
+    width: 380px;
+    height: auto;
+    margin-bottom: 5px;
+  }
+
+  .content p{
+    font-size:24px;
+    line-height:1.5;
+    font-family: "Rubik", sans-serif;
+  }
+
+  .btn{
+    background:white;
+    color:#001f5a;
+    padding:12px 35px;
+    border-radius:50px;
+    text-decoration:none;
+    font-weight:bold;
+    display:inline-block;
+    transition: 0.3s;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  }
+
+  .btn:hover {
+    background: #4dacec;
+    color: white;
+    transform: scale(1.05);
+  }
+
+  .arrow{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    width:50px;
+    height:50px;
+    border:none;
+    border-radius:50%;
+    cursor:pointer;
+    font-size:18px;
+    background: rgba(255, 255, 255, 0.8);
+    color: #001f5a;
+    z-index: 5;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .arrow:hover {
+    background: white;
+    background: #4dacec;
+    color: white;
+  }
+
+  .next{ right:20px; }
+  .prev{ left:20px; }
+
+  .dots{
+    position:absolute;
+    bottom:20px;
+    left:50%;
+    transform:translateX(-50%);
+    display:flex;
+    gap:8px;
+    z-index:10;
+  }
+
+  .dot{
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.4);
+    cursor:pointer;
+    transition: 0.3s;
+  }
+
+  .dot.active{
+    background:#4dacec;
+    width: 25px;
+    border-radius: 10px;
+  }
+
+  /* עיצוב מחדש, מכווץ ואלגנטי ל-4 הכרטיסים */
+  .cards-section{
+    padding:30px 10px;
+    max-width: 1900px;
+    margin: 0 auto;
+  }
+
+  .cards{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr); /* פריסה קבועה של 4 בשורה במסכים רחבים */
+    gap:20px;
+  }
+
+  .card{
+    background:white;
+    border-radius:15px;
+    overflow:hidden;
+    transition:.3s;
+    cursor:pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card:hover{
+    transform:translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+  }
+
+  /* התאמת התמונה המלבנית כך שלא תימתח ותהיה מכווצת ויפה */
+  .card-img-wrapper {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* יחס גובה-רוחב מושלם של 16:9 למלבן */
+    overflow: hidden;
+  }
+
+  .card img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+  }
+
+  .card-body{
+    padding:15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex-grow: 1;
+  }
+
+  .duration-wrapper {
+    display: flex;
+  }
+
+  .duration{
+    background:#001f5a;
+    color:white;
+    padding:4px 10px;
+    border-radius:20px;
+    font-size:11px;
+    font-weight: bold;
+  }
+
+  .card h3{
+    color:#001f5a;
+    font-size: 20px;
+    line-height: 1.4;
+    margin: 0;
+    font-weight: bold;
+    font-family: "Rubik", sans-serif;
+  }
+
+  /* עיצוב סליידרים תחתונים */
+  .videos-slider{
+    display:flex;
+    gap:20px;
+    overflow-x:auto;
+    overflow-y:hidden;
+    padding:20px;
+    scroll-behavior:smooth;
+    -webkit-overflow-scrolling:touch;
+    margin-bottom:40px;
+  }
+
+  .videos-slider::-webkit-scrollbar{
+    display:none;
+  }
+
+  .video-card{
+    position:relative;
+    flex:0 0 220px;
+    height:380px;
+    border-radius:18px;
+    overflow:hidden;
+    background:white;
+    cursor:pointer;
+    transition:.3s;
+    box-shadow:0 8px 25px rgba(0,0,0,.15);
+  }
+
+  .video-card:hover{
+    transform:translateY(-10px);
+  }
+
+  .video-card img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+  }
+
+  .section-title{
+    color:#001f5a;
+    font-size:45px;
+    margin:40px 20px 10px;
+    font-weight:bold;
+    font-family: "Rubik", sans-serif;
+  }
+
+  /* רספונסיביות למובייל ומסכים קטנים */
+  @media(max-width:1024px){
+    .cards{
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media(max-width:768px){
+    .hero-slider{
+      height:50vh;
+    }
+    .content{
+      width:90%;
+      right:5%;
+    }
+    .content h1{ font-size:34px; }
+    .content p{ font-size:18px; }
+    .content .logo { width: 150px; }
+    .arrow{ width:40px; height:40px; font-size: 14px;}
+    
+    .cards{
+      grid-template-columns: 1fr;
+    }
+    .video-card{
+      flex:0 0 140px;
+      height:250px;
+    }
+    .section-title{ font-size:35px; }
+  }
+
+@media(max-width:768px){
+
+  .hero-slider{
+    height:auto;
+    background:#001f5a;
+  }
+
+  .slide{
+    flex-direction:column;
+    align-items:stretch;
+    min-height:auto;
+  }
+
+  .slide img.bg-image{
+    position:relative;
+    width:100%;
+    height:260px;
+    object-fit:cover;
+
+    mask-image:none;
+    -webkit-mask-image:none;
+  }
+
+  .overlay,
+  .blur-overlay{
+    display:none;
+  }
+
+  .content{
+    position:relative;
+    top:auto;
+    right:auto;
+    transform:none;
+
+    width:100%;
+    padding:25px 20px 80px;
+    background:#001f5a;
+
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    text-align:right;
+  }
+
+  .content .logo{
+    width:170px;
+    max-width:70%;
+    margin-bottom:15px;
+  }
+
+  .content p{
+    font-size:16px;
+    line-height:1.6;
+    margin-bottom:15px;
+  }
+
+  .btn{
+    padding:12px 24px;
+    font-size:15px;
+  }
+
+  .dots{
+    bottom:20px;
+  }
+
+  .arrow{
+    display:none;
+  }
+}
+
+@media(max-width:768px){
+
+  /* באנר */
+
+  .hero-slider{
+    height:auto;
+    background:#001f5a;
+  }
+
+  .slide{
+    flex-direction:column;
+    align-items:stretch;
+    min-height:auto;
+    position:relative;
+  }
+
+  .slide img.bg-image{
+    position:relative;
+    width:100%;
+    height:260px;
+    object-fit:cover;
+
+    mask-image:none;
+    -webkit-mask-image:none;
+  }
+
+  /* שכבת כחול כהה על התמונה */
+
+  .slide::after{
+    content:'';
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    height:260px;
+
+    background:
+    linear-gradient(
+      to bottom,
+      rgba(0,31,90,.15),
+      rgba(0,31,90,.6)
+    );
+
+    z-index:1;
+    pointer-events:none;
+  }
+
+  .overlay,
+  .blur-overlay{
+    display:none;
+  }
+
+  .content{
+    position:relative;
+    top:auto;
+    right:auto;
+    transform:none;
+
+    width:100%;
+    padding:25px 20px 80px;
+
+    background:#001f5a;
+
+    display:flex;
+    flex-direction:column;
+    align-items:flex-end;
+
+    text-align:right;
+    z-index:3;
+  }
+
+  .content .logo{
+    width:180px;
+    max-width:75%;
+    margin-bottom:15px;
+  }
+
+  .content p{
+    font-size:16px;
+    line-height:1.6;
+    margin-bottom:15px;
+  }
+
+  .btn{
+    padding:12px 24px;
+    font-size:15px;
+  }
+
+  /* חצים */
+
+  .arrow{
+    display:flex;
+    width:42px;
+    height:42px;
+    font-size:14px;
+
+    background:rgba(0,31,90,.8);
+    color:white;
+
+    backdrop-filter:blur(10px);
+  }
+
+  .next{
+    right:10px;
+  }
+
+  .prev{
+    left:10px;
+  }
+
+  /* נקודות */
+
+  .dots{
+    bottom:20px;
+  }
+
+  /* 4 כרטיסים בגלילה אופקית */
+
+  .cards{
+    display:flex;
+    gap:15px;
+
+    overflow-x:auto;
+    overflow-y:hidden;
+
+    padding:0 15px 10px;
+
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+  }
+
+  .cards::-webkit-scrollbar{
+    display:none;
+  }
+
+  .card{
+    flex:0 0 280px;
+    scroll-snap-align:start;
+  }
+
+  /* כרטיסי הווידאו */
+
+  .video-card{
+    flex:0 0 160px;
+    height:270px;
+  }
+
+  .section-title{
+    font-size:28px;
+    margin-right:15px;
+  }
+}
+
+
+</style>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+
+<section class="hero-slider">
+  <div class="slides">
+    
+    <div class="slide">
+      <img src="images\2.png" class="bg-image">
+      <div class="blur-overlay"></div>
+      <div class="overlay"></div>
+      <div class="content">
+        <img src="טאב-removebg-preview.png" class="logo" alt="לוגו">
+        <p>מיטב התוכניות במקום אחד</p>
+        <a href="#" class="btn">כניסה</a>
+      </div>
+    </div>
+
+    <div class="slide">
+      <img src="ab6772ab000016926a64cad435ba379f72fc4238.jpg" class="bg-image">
+      <div class="blur-overlay"></div>
+      <div class="overlay"></div>
+      <div class="content">
+        <img src="כקכדעשד-1024x407.png" class="logo" alt="לוגו">
+        <p>סדרת הרשת שתלווה אתכם בצעדים הראשונים החל מהשחרור ועד היציאה מן הבית של ההורים</p>
+        <a href="#" class="btn">צפייה ישירה</a>
+      </div>
+    </div>
+
+    <div class="slide">
+      <img src="hq720 (1) (1).jpg" class="bg-image">
+      <div class="blur-overlay"></div>
+      <div class="overlay"></div>
+      <div class="content">
+        <img src="hq720-removebg-preview.png" class="logo" alt="לוגו">
+        <p>נעמי רביע ומורן אלמוג בהסכת בו יפגשו וידברו עם אימהות שיקירהם נפצעו או נהרגו</p>
+        <a href="#" class="btn">צפייה ישירה</a>
+      </div>
+    </div>
+
+    <div class="slide">
+      <img src="קולש בק אופיס.jpg" class="bg-image">
+      <div class="blur-overlay"></div>
+      <div class="overlay"></div>
+      <div class="content">
+        <img src="30_שנה_ללכתו_של_סשה_ארגוב__2_-removebg-preview.png" class="logo" alt="לוגו">
+        <p>תכנים ב ffffלעדיים ואיכותיים</p>
+        <a href="#" class="btn">צפייה ישירה</a>
+      </div>
+    </div>
+
+    <div class="slide">
+      <img src="aviva.jpg" class="bg-image">
+      <div class="blur-overlay"></div>
+      <div class="overlay"></div>
+      <div class="content">
+        <img src="טוב שבאתם לוגו חדש 1.png" class="logo" alt="לוגו">
+        <p>תכנים בלעדיים ואיכותיים</p>
+        <a href="#" class="btn">צפייה ישירה</a>
+      </div>
+    </div>
+
+    <div class="slide">
+      <img src="ep4.jpg" class="bg-image">
+      <div class="blur-overlay"></div>
+      <div class="overlay"></div>
+      <div class="content">
+        <img src="image-removebg-preview.png" class="logo" alt="לוגו">
+        <p>תכנים בלעדיים ואיכותיים</p>
+        <a href="#" class="btn">צפייה ישירה</a>
+      </div>
+    </div>
+
+    <div class="slide">
+      <img src="בתןך-הפודקאסט-פי-2-1.png" class="bg-image">
+      <div class="blur-overlay"></div>
+      <div class="overlay"></div>
+      <div class="content">
+        <img src="טוב שבאתם לוגו חדש 1.png" class="logo" alt="לוגו">
+        <p>תכנים בלעדיים ואיכותיים</p>
+        <a href="#" class="btn">צפייה ישירה</a>
+      </div>
+    </div>
+
+  </div>
+
+  <button class="arrow prev">
+    <i class="fa-solid fa-chevron-left"></i>
+  </button>
+  <button class="arrow next">
+    <i class="fa-solid fa-chevron-right"></i>
+  </button>
+
+  <div class="dots"></div>
+</section>
+
+<section class="cards-section">
+  <div class="cards">
+
+    <div class="card">
+      <div class="card-img-wrapper">
+        <img src="בתןך-הפודקאסט-פי-2jpg-1.jpeg">
+      </div>
+      <div class="card-body">
+        <h3>טוב שבאתם | נונו | 10.3.25</h3>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-img-wrapper">
+        <img src="טאב הוריזונטל טו בשבט.jpg">
+      </div>
+      <div class="card-body">
+        <h3>טוב שבאתם | נונו | 10.3.25</h3>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-img-wrapper">
+        <img src="קולש בק אופיס.jpg">
+      </div>
+      <div class="card-body">
+        <h3>טוב שבאתם | נונו | 10.3.25</h3>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-img-wrapper">
+        <img src="ep4.jpg">
+      </div>
+      <div class="card-body">
+        <h3>טוב שבאתם | נונו | 10.3.25</h3>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="grid-wrapper">
+  <div class="grid-background"></div>
+
+  <section class="cards-section" style="background-color: transparent;">
+    <h1 class="section-title">סדרות רשת</h1>
+    <div class="videos-slider">
+        <div class="video-card"><img src="תמונה ארוכה מאד פי 2.png"></div>
+        <div class="video-card"><img src="תמונה ארוכה מאד פי 2.png"></div>
+        <div class="video-card"><img src="תמונה ארוכה מאד פי 2.png"></div>
+        <div class="video-card"><img src="תמונה ארוכה מאד פי 2.png"></div>
+        <div class="video-card"><img src="תמונה ארוכה מאד פי 2.png"></div>
+    </div>
+
+    <h1 class="section-title">תרבות ופנאי</h1>
+    <div class="videos-slider">
+        <div class="video-card"><img src="תמונה ארוכה מאד פי 2.png"></div>
+        <div class="video-card"><img src="תמונה ארוכה מאד פי 2.png"></div>
+        <div class="video-card"><img src="תמונה ארוכה מאד פי 2.png"></div>
+        <div class="video-card"><img src="תמונה ארוכה מאד פי 2.png"></div>
+        <div class="video-card"><img src="תמונה ארוכה מאד פי 2.png"></div>
+    </div>
+
+    <h1 class="section-title">הסכתים</h1>
+    <div class="videos-slider">
+        <div class="video-card"><img src="תמונה-ארוכה-מאד-פי-2.png"></div>
+        <div class="video-card"><img src="תמונה ארוכה מאד פי 2.png"></div>
+        <div class="video-card"><img src="תמונה ארוכה מאד פי 2.png"></div>
+        <div class="video-card"><img src="תמונה ארוכה מאד פי 2.png"></div>
+        <div class="video-card"><img src="תמונה ארוכה מאד פי 2.png"></div>
+    </div>
+
+    <h1 class="section-title">חגים ומועדים</h1>
+    <div class="videos-slider">
+        <div class="video-card"><img src="תמונה ארוכה מאד פי 2.png"></div>
+        <div class="video-card"><img src="תמונה ארוכה מאד פי 2.png"></div>
+        <div class="video-card"><img src="תמונה ארוכה מאד פי 2.png"></div>
+        <div class="video-card"><img src="תמונה ארוכה מאד פי 2.png"></div>
+        <div class="video-card"><img src="תמונה ארוכה מאד פי 2.png"></div>
+    </div>
+
+<div class="plyr__video-embed" id="player" style="margin: 40px auto; max-width: 1000px;">
+    <iframe
+        src="https://www.youtube.com/embed/vVnMKAuHqIM?si=Rn-xq_I6MAvSxFIC"
+        >
+    </iframe>
+</div>
+
+
+  </section>
+</div>
+
+<script>
+  const slidesContainer = document.querySelector('.slides');
+  const slides = document.querySelectorAll('.slide');
+  const prevBtn = document.querySelector('.prev');
+  const nextBtn = document.querySelector('.next');
+  const dotsContainer = document.querySelector('.dots');
+
+  let currentIndex = 0;
+
+  // יצירת נקודות ניווט בצורה דינמית לפי כמות הסליידים
+  slides.forEach((_, index) => {
+    const dot = document.createElement('div');
+    dot.classList.add('dot');
+    if (index === 0) dot.classList.add('active');
+    dot.addEventListener('click', () => goToSlide(index));
+    dotsContainer.appendChild(dot);
+  });
+
+  const dots = document.querySelectorAll('.dot');
+
+  function updateSlider() {
+    // בגלל כיוון ה-RTL (ימין לשמאל), נזיז באמצעות transform חיובי
+    slidesContainer.style.transform = `translateX(${currentIndex * 100}%)`;
+    
+    // עדכון נקודות אקטיביות
+    dots.forEach((dot, index) => {
+      dot.classList.toggle('active', index === currentIndex);
+    });
+  }
+
+  function goToSlide(index) {
+    currentIndex = index;
+    updateSlider();
+  }
+
+  // התאמת כיווני החצים לאתר בעברית (RTL)
+  nextBtn.addEventListener('click', () => {
+    if (currentIndex < slides.length - 1) {
+      currentIndex++;
+    } else {
+      currentIndex = 0; // חוזר להתחלה
+    }
+    updateSlider();
+  });
+
+  prevBtn.addEventListener('click', () => {
+    if (currentIndex > 0) {
+      currentIndex--;
+    } else {
+      currentIndex = slides.length - 1; // הולך לסוף
+    }
+    updateSlider();
+  });
+
+
+const player = new Plyr('#player', {
+    tooltips: {
+        controls: true,
+        seek: true
+    },
+
+    i18n: {
+        restart: 'הפעל מחדש',
+        rewind: 'אחורה {seektime} שניות',
+        play: 'נגן',
+        pause: 'השהה',
+        fastForward: 'קדימה {seektime} שניות',
+        seek: 'חפש',
+        seekLabel: '{currentTime} מתוך {duration}',
+        played: 'נוגן',
+        buffered: 'נטען',
+        currentTime: 'זמן נוכחי',
+        duration: 'משך',
+        volume: 'עוצמת קול',
+        mute: 'השתק',
+        unmute: 'בטל השתקה',
+        enableCaptions: 'הפעל כתוביות',
+        disableCaptions: 'כבה כתוביות',
+        download: 'הורד',
+        enterFullscreen: 'מסך מלא',
+        exitFullscreen: 'צא ממסך מלא',
+        frameTitle: 'נגן עבור {title}',
+        captions: 'כתוביות',
+        settings: 'הגדרות',
+        speed: 'מהירות',
+        normal: 'רגיל',
+        quality: 'איכות',
+        loop: 'לולאה'
+    }
+});
+
+let startX = 0;
+let endX = 0;
+
+slidesContainer.addEventListener("touchstart", e => {
+  startX = e.touches[0].clientX;
+});
+
+slidesContainer.addEventListener("touchend", e => {
+
+  endX = e.changedTouches[0].clientX;
+
+  if(startX - endX > 50){
+
+    currentIndex =
+      currentIndex < slides.length - 1
+      ? currentIndex + 1
+      : 0;
+
+    updateSlider();
+  }
+
+  if(endX - startX > 50){
+
+    currentIndex =
+      currentIndex > 0
+      ? currentIndex - 1
+      : slides.length - 1;
+
+    updateSlider();
+  }
+
+});
+
+
+</script>
+
+</body>
+</html>

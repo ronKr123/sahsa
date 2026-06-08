@@ -1,0 +1,136 @@
+{
+  "weeks": [
+    {
+      "weekStart": "2026-05-17"
+    }
+  ],
+  "weeklyTemplate": {
+    "0": [
+      {
+        "start": "08:00",
+        "title": "בוקר טוב",
+        "host": "נועה לוי",
+        "category": "מגזין בוקר",
+        "description": "שעה קלילה עם חדשות, טיפים ותוכן לכל המשפחה.",
+        "image": "תכלת 2 (1)-Photoroom.png",
+        "badge": "משפחה"
+      },
+      {
+        "start": "09:00",
+        "end": "10:30",
+        "title": "שעת סיפור",
+        "host": "איתי כהן",
+        "category": "ילדים",
+        "description": "תוכנית סיפורים וקטעי אנימציה קצרים לילדים.",
+        "image": "https://i.imgur.com/ScruhLY.png"
+      },
+      {
+        "start": "09:00",
+        "end": "10:30",
+        "title": "שעת סיפור",
+        "host": "איתי כהן",
+        "category": "ילדים",
+        "description": "תוכנית סיפורים וקטעי אנימציה קצרים לילדים.",
+        "image": "https://i.imgur.com/ScruhLY.png"
+      },
+      {
+        "start": "09:00",
+        "end": "10:30",
+        "title": "שעת סיפור",
+        "host": "איתי כהן",
+        "category": "ילדים",
+        "description": "תוכנית סיפורים וקטעי אנימציה קצרים לילדים.",
+        "image": "https://i.imgur.com/ScruhLY.png"
+      }
+    ],
+    "1": [
+      {
+        "start": "12:00",
+        "end": "14:00",
+        "title": "הפסקת צהריים",
+        "host": "מיכל גרין",
+        "category": "מגזין",
+        "description": "שידור קליל עם ראיונות, מוזיקה ומידע שימושי.",
+        "image": "https://i.imgur.com/ScruhLY.png"
+      }
+    ],
+    "2": [
+      {
+        "start": "16:00",
+        "end": "17:00",
+        "title": "עולם המדע",
+        "host": "דניאל שרון",
+        "category": "חינוך",
+        "description": "הסברים פשוטים לנושאים במדע וטכנולוגיה.",
+        "image": "https://i.imgur.com/ScruhLY.png"
+      }
+    ],
+    "3": [
+      {
+        "start": "18:00",
+        "end": "19:00",
+        "title": "מוסיקה בערב",
+        "host": "רוני בן דוד",
+        "category": "מוסיקה",
+        "description": "שעה של שירים, קליפים וסיפורים מאחורי היצירה.",
+        "image": "https://i.imgur.com/ScruhLY.png"
+      }
+    ],
+    "4": [
+      {
+        "start": "19:00",
+        "end": "20:30",
+        "title": "המסך הגדול",
+        "host": "עמית לוי",
+        "category": "תרבות",
+        "description": "סקירה על סרטים, סדרות ותכנים חדשים.",
+        "image": "https://i.imgur.com/ScruhLY.png"
+      }
+    ],
+    "5": [
+      {
+        "start": "10:00",
+        "end": "12:00",
+        "title": "סוף שבוע",
+        "host": "יעל כהן",
+        "category": "אירוח",
+        "description": "תוכנית סוף שבוע עם אורחים ואווירה טובה.",
+        "image": "https://i.imgur.com/ScruhLY.png"
+      }
+    ],
+    "6": [
+      {
+        "start": "20:00",
+        "end": "21:30",
+        "title": "סיכום השבוע",
+        "host": "דנה מזרחי",
+        "category": "חדשות",
+        "description": "סיכום האירועים החשובים של השבוע החולף.",
+        "image": "https://i.imgur.com/ScruhLY.png"
+      }
+    ]
+  },
+  "exceptions": {
+    "2026-05-20": [
+      {
+        "start": "00:03",
+        "end": "01:30",
+        "title": "הבאר 2 - 1",
+        "host": "מוגש",
+        "category": "מיוחד",
+        "description": "שעה שנייה מפעימה ומותחת לסדרת ההמשך.",
+        "image": "https://i.imgur.com/ScruhLY.png",
+        "badge": "8+"
+      },
+      {
+        "start": "00:30",
+        "end": "01:15",
+        "title": "סודר הצעיר - התזמון",
+        "host": "הצוות",
+        "category": "ילדים",
+        "description": "תוכנית מיוחדת לילדים ולמשפחה.",
+        "image": "media/IMG_3826.JPG"
+      }
+    ]
+  }
+}
